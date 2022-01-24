@@ -1,0 +1,11 @@
+Tên game: Game bài dân gian.
+Thể loại: Giải trí 
+
+Nội dung game: Game sẽ bao gồm các loại đánh bài dân gian nổi tiếng như:
++ Tài xỉu
++ Bầu cua
++ Xóc dĩa
++ ....
+
+
+ 
