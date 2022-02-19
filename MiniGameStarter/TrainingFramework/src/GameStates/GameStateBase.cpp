@@ -9,6 +9,7 @@
 
 #include "GameStatebase.h"
 #include "../../GSXocDia.h"
+#include "../../GSBauCua.h"
 
 
 
@@ -33,6 +34,10 @@ std::shared_ptr<GameStateBase> GameStateBase::CreateState(StateType stt)
 		break;
 	case StateType::STATE_XOCDIA:
 		gs = std::make_shared<GSXocDia>();
+		break;
+	case StateType::STATE_BAUCUA:
+		gs = std::make_shared<GSBauCua>();
+		break;
 	default:
 		break;
 	}

@@ -1,5 +1,7 @@
 #pragma once 
 #include "Sprite2D.h"
+#include"..//..//GSXocDia.h"
+
 
 class GameButton : public Sprite2D
 {

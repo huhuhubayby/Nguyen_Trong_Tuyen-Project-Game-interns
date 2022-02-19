@@ -73,6 +73,9 @@ void GSMenu::Init()
 	button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(m_xBegin+120, m_yBegin+50);
 	button->SetSize(80, 80);
+	button->SetOnClick([]() {
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_BAUCUA);
+		});
 	m_listButton.push_back(button);
 
 	// xoc dia
