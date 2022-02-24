@@ -1,6 +1,6 @@
 #include "GSMenu.h"
 #include "Camera.h"
-
+#include <string>
 
 GSMenu::GSMenu() : GameStateBase(StateType::STATE_MENU), 
 	m_background(nullptr), m_listButton(std::list<std::shared_ptr<GameButton>>{}), m_listButtonMenu(std::list<std::shared_ptr<GameButton>>{}), m_textGameName(nullptr)
@@ -42,7 +42,7 @@ void GSMenu::Init()
 
 	// sprite dollars
 	texture = ResourceManagers::GetInstance()->GetTexture("dolar_ico.tga");
-	m_dollarsIco = std::make_shared<GameButton>(model, shader, texture);
+	m_dollarsIco = std::make_shared<Sprite2D>(model, shader, texture);
 	m_dollarsIco->Set2DPosition(Globals::screenWidth/2, 40);
 	m_dollarsIco->SetSize(80, 40);
 	
@@ -61,14 +61,18 @@ void GSMenu::Init()
 	button->SetSize(80, 80);
 	m_listButtonMenu.push_back(button);
 
-	// tai xiu
+	// button tai xiu
 	texture = ResourceManagers::GetInstance()->GetTexture("tai_xiu_ico.tga");
 	button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(m_xBegin, m_yBegin+50);
 	button->SetSize(80, 80);
+	button->SetOnClick([]() {
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_TAIXIU);
+		});
+	m_listButton.push_back(button);
 	m_listButton.push_back(button);
 
-	// bau cua
+	// button bau cua
 	texture = ResourceManagers::GetInstance()->GetTexture("bau_cua_ico.tga");
 	button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(m_xBegin+120, m_yBegin+50);
@@ -107,7 +111,7 @@ void GSMenu::Init()
 	// money
 	//shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	font = ResourceManagers::GetInstance()->GetFont("Athletic Outfit.ttf");
-	m_money = std::make_shared< Text>(shader, font, "100", Vector4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f);
+	m_money = std::make_shared< Text>(shader, font, std::to_string(Globals::moneys), Vector4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f);
 	m_money->Set2DPosition(Vector2(Globals::screenWidth/2-20, 100));
 }
 

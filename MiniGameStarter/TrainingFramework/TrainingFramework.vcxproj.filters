@@ -60,7 +60,7 @@
     <ClCompile Include="src\GameStates\GSMenu.cpp">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameStates\GSPlay.cpp">
+    <ClCompile Include="src\GameStates\GSTaiXiu.cpp">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManager\ResourceManagers.cpp">
@@ -73,9 +73,6 @@
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="GSXocDia.cpp">
-      <Filter>TrainingFramework\src\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="GSTaiXiu.cpp">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,7 +125,7 @@
     <ClInclude Include="src\GameStates\GSMenu.h">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameStates\GSPlay.h">
+    <ClInclude Include="src\GameStates\GSTaiXiu.h">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManager\ResourceManagers.h">
@@ -141,9 +138,6 @@
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="GSXocDia.h">
-      <Filter>TrainingFramework\src\GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="GSTaiXiu.h">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClInclude>
   </ItemGroup>

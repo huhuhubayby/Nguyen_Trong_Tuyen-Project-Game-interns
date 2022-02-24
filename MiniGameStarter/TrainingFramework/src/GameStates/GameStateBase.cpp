@@ -2,7 +2,7 @@
 #include "GSIntro.h"
 #include "GSMenu.h"
 */
-#include "GSPlay.h"
+//#include "GSPlay.h"
 #include "GSIntro.h"
 #include "GSMenu.h"
 
@@ -10,6 +10,7 @@
 #include "GameStatebase.h"
 #include "../../GSXocDia.h"
 #include "../../GSBauCua.h"
+#include <GameStates/GSTaiXiu.h>
 
 
 
@@ -29,8 +30,8 @@ std::shared_ptr<GameStateBase> GameStateBase::CreateState(StateType stt)
 	case StateType::STATE_MENU:
 		gs = std::make_shared<GSMenu>();
 		break;
-	case StateType::STATE_PLAY:
-		gs = std::make_shared<GSPlay>();
+	case StateType::STATE_TAIXIU:
+		gs = std::make_shared<GSTaiXiu>();
 		break;
 	case StateType::STATE_XOCDIA:
 		gs = std::make_shared<GSXocDia>();

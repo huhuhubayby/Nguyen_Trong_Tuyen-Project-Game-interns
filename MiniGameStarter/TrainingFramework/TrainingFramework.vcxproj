@@ -344,7 +344,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GSBauCua.cpp" />
-    <ClCompile Include="GSTaiXiu.cpp" />
     <ClCompile Include="GSXocDia.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
@@ -361,12 +360,11 @@
     <ClCompile Include="src\GameStates\GameStateMachine.cpp" />
     <ClCompile Include="src\GameStates\GSIntro.cpp" />
     <ClCompile Include="src\GameStates\GSMenu.cpp" />
-    <ClCompile Include="src\GameStates\GSPlay.cpp" />
+    <ClCompile Include="src\GameStates\GSTaiXiu.cpp" />
     <ClCompile Include="src\TrainingFramework.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GSBauCua.h" />
-    <ClInclude Include="GSTaiXiu.h" />
     <ClInclude Include="GSXocDia.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\GameConfig.h" />
@@ -386,7 +384,7 @@
     <ClInclude Include="src\GameStates\GameStateMachine.h" />
     <ClInclude Include="src\GameStates\GSIntro.h" />
     <ClInclude Include="src\GameStates\GSMenu.h" />
-    <ClInclude Include="src\GameStates\GSPlay.h" />
+    <ClInclude Include="src\GameStates\GSTaiXiu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

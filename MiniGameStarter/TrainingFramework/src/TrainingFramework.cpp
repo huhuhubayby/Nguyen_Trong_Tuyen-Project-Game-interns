@@ -5,6 +5,7 @@
 
 int Globals::screenWidth = 480;
 int Globals::screenHeight = 800;
+int Globals::moneys = 100;
 
 GLint Init(ESContext* esContext)
 {

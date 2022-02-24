@@ -1,6 +1,7 @@
 #pragma once 
 #include "Sprite2D.h"
 #include"..//..//GSXocDia.h"
+#include<functional>
 
 
 class GameButton : public Sprite2D
@@ -9,11 +10,12 @@ public:
 	GameButton() : Sprite2D(), m_pBtClick(nullptr), m_isHolding(false) {}
 	GameButton(std::shared_ptr<Model> model, std::shared_ptr<Shader> shader, std::shared_ptr<Texture> texture);
 	~GameButton();
-	void	SetOnClick(void	(*pBtClick)());
+	void	SetOnClick(std::function<void(void)>pBtClick);
 	bool	HandleTouchEvents(GLint x, GLint y, bool bIsPressed);
 	bool	IsHolding();
 	bool    HandleOverEvents(int x,int y);
 private:
-	void	(*m_pBtClick)();
+	//void	(*m_pBtClick)();
+	std::function<void(void)> m_pBtClick;
 	bool	m_isHolding;
 };

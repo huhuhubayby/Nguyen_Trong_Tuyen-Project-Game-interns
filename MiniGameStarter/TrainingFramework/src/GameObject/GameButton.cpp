@@ -10,9 +10,9 @@ GameButton::~GameButton()
 {
 }
 
-void GameButton::SetOnClick(void(*pBtClickFun)())
+void GameButton::SetOnClick(std::function<void(void)> pBtClick)
 {
-	m_pBtClick = pBtClickFun;
+	m_pBtClick = pBtClick;
 }
 
 bool GameButton::HandleTouchEvents(GLint x, GLint y, bool bIsPressed)
