@@ -52,6 +52,9 @@ void GSMenu::Init()
 	button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(50+10, 50+10);
 	button->SetSize(80, 80);
+	button->SetOnClick([]() {
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_NAPTHE);
+		});
 	m_listButtonMenu.push_back(button);
 
 	// button setting
@@ -69,7 +72,7 @@ void GSMenu::Init()
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_TAIXIU);
 		});
-	m_listButton.push_back(button);
+	
 	m_listButton.push_back(button);
 
 	// button bau cua
@@ -208,6 +211,7 @@ void GSMenu::Update(float deltaTime)
 	{
 		it->Update(deltaTime);
 	}
+	m_money->SetText(std::to_string(Globals::moneys));
 }
 
 void GSMenu::Draw()

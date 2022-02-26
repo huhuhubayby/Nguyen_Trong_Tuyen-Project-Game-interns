@@ -344,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GSBauCua.cpp" />
+    <ClCompile Include="GSNapThe.cpp" />
     <ClCompile Include="GSXocDia.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
@@ -365,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GSBauCua.h" />
+    <ClInclude Include="GSNapThe.h" />
     <ClInclude Include="GSXocDia.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\GameConfig.h" />

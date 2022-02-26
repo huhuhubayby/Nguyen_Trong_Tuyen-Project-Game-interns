@@ -11,6 +11,7 @@
 #include "../../GSXocDia.h"
 #include "../../GSBauCua.h"
 #include <GameStates/GSTaiXiu.h>
+#include "../../GSNapThe.h"
 
 
 
@@ -38,6 +39,9 @@ std::shared_ptr<GameStateBase> GameStateBase::CreateState(StateType stt)
 		break;
 	case StateType::STATE_BAUCUA:
 		gs = std::make_shared<GSBauCua>();
+		break;
+	case StateType::STATE_NAPTHE:
+		gs = std::make_shared<GSNapThe>();
 		break;
 	default:
 		break;

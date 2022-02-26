@@ -35,6 +35,7 @@ private:
 	std::shared_ptr<Sprite2D>				m_BatDia;
 	std::shared_ptr<Sprite2D>				m_Bat;
 	std::shared_ptr<Sprite2D>				m_Dia;
+	std::shared_ptr<Sprite2D>				m_BoderChip;
 
 	std::shared_ptr<GameButton>				m_btnBau;
 	std::shared_ptr<GameButton>				m_btnCua;
@@ -44,5 +45,12 @@ private:
 	std::shared_ptr<GameButton>				m_btnGa;
 
 	std::list<std::shared_ptr<GameButton>>	m_listButton;
+
+	int     m_cuoc;
+	bool    m_Press_Xuc;
+	clock_t m_timeBegin;
+	clock_t m_times;
+	int     m_Vel;
+	int     m_PosX;
 
 };

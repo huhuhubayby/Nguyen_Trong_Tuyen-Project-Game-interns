@@ -265,9 +265,9 @@ void GSXocDia::Init()
 
 	//// score
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Athletic Outfit.ttf");
-	m_money = std::make_shared< Text>(shader, font, std::to_string(Globals::moneys), Vector4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f);
-	m_money->Set2DPosition(Vector2(Globals::screenWidth / 2 - 20, 50));
+	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd.ttf");
+	m_money = std::make_shared< Text>(shader, font,"$" +std::to_string(Globals::moneys), Vector4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f);
+	m_money->Set2DPosition(Vector2(0, 50));
 }
 
 
@@ -395,6 +395,13 @@ void GSXocDia::Update(float deltaTime)
 				m_chan = false;
 			}
 			m_Action_Xuc = true;
+
+			if ((m_le && m_chan) || (!m_le && !m_chan)) {
+				m_ChanLe_Yellow->Set2DPosition(((float)Globals::screenWidth / 2) - 100, 400);
+			}
+			else {
+				m_ChanLe_Yellow->Set2DPosition(((float)Globals::screenWidth / 2) + 100, 400);
+			}
 		}
 		m_BatDia->Update(deltaTime);
 	}
@@ -414,20 +421,21 @@ void GSXocDia::Update(float deltaTime)
 			m_Dong_bat = true;
 			
 			if (m_Chose_le ) {
-				if (!m_le && !m_chan)
+				if ((m_le && !m_chan) || (!m_le && m_chan))
 				{
 					m_cuoc = 2 * m_cuoc;
 					Globals::moneys += m_cuoc;
-
+					
 					m_cuoc = 0;
 				}
 				else {
+					
 					m_cuoc = 0;
 				}
 			}
 			if (m_Chose_chan)
 			{
-				if ((m_le && m_chan) || (m_le && !m_chan) || (!m_le && m_chan)) {
+				if ((m_le && m_chan) || (!m_le && !m_chan) ) {
 					m_cuoc = 2*m_cuoc;
 					Globals::moneys +=  m_cuoc;
 					
@@ -438,6 +446,7 @@ void GSXocDia::Update(float deltaTime)
 				}
 			}
 			
+			//m_ChanLe_Yellow->Update(deltaTime);
 		}
 		m_Dia->Update(deltaTime);
 		m_Bat->Update(deltaTime);
@@ -453,7 +462,7 @@ void GSXocDia::Update(float deltaTime)
 		it->Update(deltaTime);
 	}
 	//m_count++;
-	m_money->SetText(std::to_string(Globals::moneys));
+	m_money->SetText("$"+std::to_string(Globals::moneys));
 	m_money->Update(deltaTime);
 }
 
@@ -480,8 +489,14 @@ void GSXocDia::Draw()
 	// draw list button
 	m_Btn_XocDia->Draw();
 
+	
+
 	m_Btn_Chan->Draw();
 	m_Btn_Le->Draw();
+
+	if (m_Mo_Bat) {
+		m_ChanLe_Yellow->Draw();
+	}
 
 	for (auto it : m_listButton)
 	{
@@ -507,6 +522,7 @@ void GSXocDia::Draw()
 	{
 		m_EffectChose->Draw();
 	}
+	
 	
 	
 	m_money->Draw();
