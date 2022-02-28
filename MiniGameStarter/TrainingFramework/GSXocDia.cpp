@@ -27,6 +27,8 @@ GSXocDia::GSXocDia()
 	m_Mo_Bat = false;
 	m_Action_Xuc = false;
 	m_Dong_bat = false;
+
+	m_Anyo = false;
 }
 
 
@@ -149,9 +151,9 @@ void GSXocDia::Init()
 	button->Set2DPosition(100,550);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 2" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100, 550);
-		if (Globals::moneys >= 2) {
+		if (Globals::moneys >= 2 && !m_Anyo) {
 			Globals::moneys -= 2;
 			m_cuoc += 2;
 		}
@@ -165,9 +167,9 @@ void GSXocDia::Init()
 	button->Set2DPosition(100+60+30, 550);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 5" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 + 30, 550);
-		if (Globals::moneys >= 5) {
+		if (Globals::moneys >= 5 && !m_Anyo) {
 			Globals::moneys -= 5;
 			m_cuoc += 5;
 		}
@@ -180,9 +182,9 @@ void GSXocDia::Init()
 	button->Set2DPosition(100 + 60*2 + 30*2, 550);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 10" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 * 2 + 30 * 2, 550);
-		if (Globals::moneys >= 10) {
+		if (Globals::moneys >= 10 && !m_Anyo) {
 			Globals::moneys -= 10;
 			m_cuoc += 10;
 		}
@@ -195,9 +197,9 @@ void GSXocDia::Init()
 	button->Set2DPosition(100 + 60 * 3 + 30 * 3, 550);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 20" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 * 3 + 30 * 3, 550);
-		if (Globals::moneys >= 20) {
+		if (Globals::moneys >= 20 && !m_Anyo) {
 			Globals::moneys -= 20;
 			m_cuoc += 20;
 		}
@@ -210,9 +212,9 @@ void GSXocDia::Init()
 	button->Set2DPosition(100 + 60 * 0 + 30 * 0, 550+60+30);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 25" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 * 0 + 30 * 0, 550 + 60 + 30);
-		if (Globals::moneys >= 25) {
+		if (Globals::moneys >= 25 && !m_Anyo) {
 			Globals::moneys -= 25;
 			m_cuoc += 25;
 		}
@@ -225,8 +227,12 @@ void GSXocDia::Init()
 	button->Set2DPosition(100 + 60 * 1 + 30 * 1, 550 + 60 + 30);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 50" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 * 1 + 30 * 1, 550 + 60 + 30);
+		if (Globals::moneys >= 50 && !m_Anyo) {
+			Globals::moneys -= 50;
+			m_cuoc += 50;
+		}
 		});
 	m_listButton.push_back(button);
 
@@ -236,8 +242,12 @@ void GSXocDia::Init()
 	button->Set2DPosition(100 + 60 * 2 + 30 * 2, 550 + 60 + 30);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 100" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 * 2 + 30 * 2, 550 + 60 + 30);
+		if (Globals::moneys >= 100 && !m_Anyo) {
+			Globals::moneys -= 100;
+			m_cuoc += 100;
+		}
 		});
 	m_listButton.push_back(button);
 
@@ -247,8 +257,12 @@ void GSXocDia::Init()
 	button->Set2DPosition(100 + 60 * 3 + 30 * 3, 550 + 60 + 30);
 	button->SetSize(60, 60);
 	button->SetOnClick([this]() {
-		std::cout << "click chip 200" << std::endl;
+		
 		m_BoderChip->Set2DPosition(100 + 60 * 3 + 30 * 3, 550 + 60 + 30);
+		if (Globals::moneys >= 200 && !m_Anyo) {
+			Globals::moneys -= 200;
+			m_cuoc += 200;
+		}
 		});
 	m_listButton.push_back(button);
 
@@ -274,6 +288,9 @@ void GSXocDia::Init()
 
 void GSXocDia::Exit()
 {
+	if (m_cuoc > 0) {
+		Globals::moneys += m_cuoc;
+	}
 }
 
 
@@ -303,13 +320,16 @@ void GSXocDia::HandleTouchEvents(int x, int y, bool bIsPressed)
 			
 		}
 		if(m_Action_Xuc && !m_Dong_bat)  {
+			m_Anyo = true;
 			m_timeBegin1 = clock();
 			m_Mo_Bat = true;
+			m_times = clock();
 			/*m_Action_Xuc = false;*/
 			
 		}
 		if (m_Dong_bat)
-		{	
+		{
+			m_Anyo = false;
 			m_Dong_bat = false;
 			m_Press_Xuc = true;
 			m_Action_Xuc = false;
@@ -356,7 +376,7 @@ void GSXocDia::Update(float deltaTime)
 	// animation
 	
 	if (m_Press_Xuc==false && !m_Action_Xuc) {
-		if (((clock() - m_timeBegin) / 1000.f) <= 1.5f) {
+		if (((clock() - m_timeBegin) / 1000.f) <= 1.0f) {
 
 
 			m_PosX += m_Vel * ((float)(clock() - m_times) / 1000.f);
@@ -386,7 +406,8 @@ void GSXocDia::Update(float deltaTime)
 			{
 				m_le = false;
 			}
-			res= rand() % (100 - 2 + 1) + 2;
+			
+			res= rand() % (200 - 15 + 1) + 15;
 			if (res % 2 == 0) {
 				m_chan = true;
 			}
@@ -408,7 +429,7 @@ void GSXocDia::Update(float deltaTime)
 	if(m_Mo_Bat && !m_Dong_bat)
 	{
 		
-		if (((clock() - m_timeBegin1) / 1000.f) <= 0.5f) {
+		if (((clock() - m_timeBegin1) / 1000.f) <= 1.0f) {
 			m_PosX += (200) * ((float)(clock() - m_times) / 1000.f);
 			m_times = clock();
 			m_Bat->Set2DPosition(m_PosX, ((float)Globals::screenHeight / 2) - 200);
@@ -423,8 +444,8 @@ void GSXocDia::Update(float deltaTime)
 			if (m_Chose_le ) {
 				if ((m_le && !m_chan) || (!m_le && m_chan))
 				{
-					m_cuoc = 2 * m_cuoc;
-					Globals::moneys += m_cuoc;
+					
+					Globals::moneys += (2*m_cuoc*80)/100;
 					
 					m_cuoc = 0;
 				}
@@ -436,8 +457,8 @@ void GSXocDia::Update(float deltaTime)
 			if (m_Chose_chan)
 			{
 				if ((m_le && m_chan) || (!m_le && !m_chan) ) {
-					m_cuoc = 2*m_cuoc;
-					Globals::moneys +=  m_cuoc;
+					
+					Globals::moneys += (2 * m_cuoc * 80) / 100;
 					
 					m_cuoc = 0;
 				}

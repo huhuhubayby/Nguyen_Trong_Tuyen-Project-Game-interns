@@ -115,7 +115,7 @@ void GSMenu::Init()
 	//shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	font = ResourceManagers::GetInstance()->GetFont("Athletic Outfit.ttf");
 	m_money = std::make_shared< Text>(shader, font, std::to_string(Globals::moneys), Vector4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f);
-	m_money->Set2DPosition(Vector2(Globals::screenWidth/2-20, 100));
+	m_money->Set2DPosition(Vector2(Globals::screenWidth/2-20, 95));
 }
 
 void GSMenu::Exit()
@@ -210,6 +210,15 @@ void GSMenu::Update(float deltaTime)
 	for (auto it : m_listButton)
 	{
 		it->Update(deltaTime);
+	}
+	if (Globals::moneys >= 1000 && Globals::moneys <= 9999) {
+		m_money->Set2DPosition(Vector2((Globals::screenWidth / 2) - 30, 95));
+	}
+	else if(Globals::moneys >= 100 && Globals::moneys <= 999) {
+		m_money->Set2DPosition(Vector2((Globals::screenWidth / 2) - 20, 95));
+	}
+	else {
+		m_money->Set2DPosition(Vector2((Globals::screenWidth / 2)-10 , 95));
 	}
 	m_money->SetText(std::to_string(Globals::moneys));
 }

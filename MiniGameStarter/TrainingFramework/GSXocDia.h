@@ -50,14 +50,6 @@ private:
 	std::shared_ptr<GameButton>				m_Btn_Le;
 	std::shared_ptr<GameButton>				m_Btn_XocDia;
 
-	/*std::shared_ptr<GameButton>				m_chip2;
-	std::shared_ptr<GameButton>				m_chip5;
-	std::shared_ptr<GameButton>				m_chip10;
-	std::shared_ptr<GameButton>				m_chip20;
-	std::shared_ptr<GameButton>				m_chip25;
-	std::shared_ptr<GameButton>				m_chip50;
-	std::shared_ptr<GameButton>				m_chip100;
-	std::shared_ptr<GameButton>				m_chip200;*/
 
 	std::shared_ptr<Text>					m_money;
 
@@ -79,6 +71,8 @@ private:
 	bool	 m_Dong_bat;
 	bool	 m_le;
 	bool	 m_chan;
+
+	bool     m_Anyo;
 
 	//bool	 m_Chose_Chan_Le;
 };

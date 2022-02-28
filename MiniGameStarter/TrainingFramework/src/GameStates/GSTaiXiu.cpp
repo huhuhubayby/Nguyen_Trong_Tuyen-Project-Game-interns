@@ -113,9 +113,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 2" << std::endl;
 		m_BoderChip->Set2DPosition(100, 550);
-		if (Globals::moneys >= 2) {
+		if (Globals::moneys >= 2 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 2;
-			m_cuoc += 3;
+			m_cuoc += 2;
 			m_tong_cuoc += 2;
 		}
 
@@ -130,9 +130,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 5" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 + 30, 550);
-		if (Globals::moneys >= 5) {
+		if (Globals::moneys >= 5 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 5;
-			m_cuoc += 7;
+			m_cuoc += 5;
 			m_tong_cuoc += 5;
 		}
 		});
@@ -146,9 +146,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 10" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 * 2 + 30 * 2, 550);
-		if (Globals::moneys >= 10) {
+		if (Globals::moneys >= 10 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 10;
-			m_cuoc += 17;
+			m_cuoc += 10;
 			m_tong_cuoc + 10;
 		}
 		});
@@ -162,9 +162,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 20" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 * 3 + 30 * 3, 550);
-		if (Globals::moneys >= 20) {
+		if (Globals::moneys >= 20 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 20;
-			m_cuoc += 35;
+			m_cuoc += 20;
 			m_tong_cuoc += 20;
 		}
 		});
@@ -178,9 +178,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 25" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 * 0 + 30 * 0, 550 + 60 + 30);
-		if (Globals::moneys >= 25) {
+		if (Globals::moneys >= 25 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 25;
-			m_cuoc += 45;
+			m_cuoc += 25;
 			m_tong_cuoc += 25;
 		}
 		});
@@ -194,9 +194,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 50" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 * 1 + 30 * 1, 550 + 60 + 30);
-		if (Globals::moneys >= 50) {
+		if (Globals::moneys >= 50 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 50;
-			m_cuoc += 85;
+			m_cuoc += 50;
 			m_tong_cuoc += 50;
 		}
 		});
@@ -210,9 +210,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 100" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 * 2 + 30 * 2, 550 + 60 + 30);
-		if (Globals::moneys >= 100) {
+		if (Globals::moneys >= 100 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 100;
-			m_cuoc += 175;
+			m_cuoc += 100;
 			m_tong_cuoc += 100;
 		}
 		});
@@ -226,9 +226,9 @@ void GSTaiXiu::Init()
 	button->SetOnClick([this]() {
 		std::cout << "click chip 200" << std::endl;
 		m_BoderChip->Set2DPosition(100 + 60 * 3 + 30 * 3, 550 + 60 + 30);
-		if (Globals::moneys >= 200) {
+		if (Globals::moneys >= 200 && (!m_Chose_chan && !m_Chose_le)) {
 			Globals::moneys -= 200;
-			m_cuoc += 355;
+			m_cuoc += 200;
 			m_tong_cuoc += 200;
 		}
 		});
@@ -259,7 +259,7 @@ void GSTaiXiu::Init()
 		else {
 			m_FlagBatDau = true;
 			m_diem = 0;
-			Globals::moneys += m_tong_cuoc;
+			Globals::moneys += m_cuoc;
 			m_cuoc = 0;
 			m_tong_cuoc = 0;
 		}
@@ -290,7 +290,7 @@ void GSTaiXiu::Init()
 void GSTaiXiu::Exit()
 {
 	if (m_tong_cuoc > 0) {
-		Globals::moneys += m_tong_cuoc;
+		Globals::moneys += m_cuoc;
 	}
 }
 
@@ -370,14 +370,14 @@ void GSTaiXiu::Update(float deltaTime)
 			if (m_Chose_chan)
 			{
 				if (m_diem % 2 == 0) {
-					Globals::moneys += m_cuoc;
+					Globals::moneys += (2*m_cuoc*80)/100;
 					
 				}
 			}
 			if (m_Chose_le)
 			{
 				if (m_diem % 2 != 0) {
-					Globals::moneys += m_cuoc;
+					Globals::moneys += (2 * m_cuoc * 80) / 100;
 					
 					
 				}
