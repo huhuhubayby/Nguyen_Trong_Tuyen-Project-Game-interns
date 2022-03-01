@@ -10,6 +10,8 @@ GSMenu::GSMenu() : GameStateBase(StateType::STATE_MENU),
 	
 	m_xOver = 0;
 	m_yOver = 0;
+
+	music_on_off = true;
 }
 
 
@@ -57,12 +59,15 @@ void GSMenu::Init()
 		});
 	m_listButtonMenu.push_back(button);
 
-	// button setting
-	texture = ResourceManagers::GetInstance()->GetTexture("setting_ico.tga");
-	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(Globals::screenWidth- 50,50+10);
-	button->SetSize(80, 80);
-	m_listButtonMenu.push_back(button);
+	//// button setting
+	//texture = ResourceManagers::GetInstance()->GetTexture("setting_ico.tga");
+	//button = std::make_shared<GameButton>(model, shader, texture);
+	//button->Set2DPosition(Globals::screenWidth- 50,50+10);
+	//button->SetSize(80, 80);
+	//button->SetOnClick([]() {
+	//	GameStateMachine::GetInstance()->PopState();
+	//	});
+	//m_listButtonMenu.push_back(button);
 
 	// button tai xiu
 	texture = ResourceManagers::GetInstance()->GetTexture("tai_xiu_ico.tga");
@@ -96,14 +101,39 @@ void GSMenu::Init()
 	m_listButton.push_back(button);
 
 	// exit button
-	/*texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close_s.tga");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(Globals::screenWidth - 50, 50);
+	button->Set2DPosition(Globals::screenWidth - 40, 50);
 	button->SetSize(50, 50);
 	button->SetOnClick([]() {
 		exit(0);
 		});
-	m_listButton.push_back(button);*/
+	m_listButtonMenu.push_back(button);
+
+	// button music on
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
+	button = std::make_shared<GameButton>(model, shader, texture);
+	button->Set2DPosition(Globals::screenWidth - 40, 50+50+20);
+	button->SetSize(50, 50);
+	button->SetOnClick([this]() {
+		if (music_on_off) {
+			ResourceManagers::GetInstance()->PauseSound("pr1");
+			music_on_off = false;
+		}
+		else
+		{
+			ResourceManagers::GetInstance()->PlaySound("pr1");
+			music_on_off = true;
+		}
+		});
+	m_listButtonMenu.push_back(button);
+
+	// button music off
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music_off.tga");
+	m_music_off = std::make_shared<Sprite2D>(model, shader, texture);
+	m_music_off->Set2DPosition(Globals::screenWidth - 40, 50 + 50 + 20);
+	m_music_off->SetSize(50, 50);
+	
 
 	// game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
@@ -116,19 +146,28 @@ void GSMenu::Init()
 	font = ResourceManagers::GetInstance()->GetFont("Athletic Outfit.ttf");
 	m_money = std::make_shared< Text>(shader, font, std::to_string(Globals::moneys), Vector4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f);
 	m_money->Set2DPosition(Vector2(Globals::screenWidth/2-20, 95));
+
+	ResourceManagers::GetInstance()->PlaySound("pr1");
 }
 
 void GSMenu::Exit()
 {
+	
 }
 
 
 void GSMenu::Pause()
 {
+	ResourceManagers::GetInstance()->PauseSound("pr1");
 }
 
 void GSMenu::Resume()
 {
+	if (music_on_off) {
+
+
+		ResourceManagers::GetInstance()->PlaySound("pr1");
+	}
 }
 
 
@@ -242,4 +281,8 @@ void GSMenu::Draw()
 	}
 	m_textGameName->Draw();
 	m_money->Draw();
+
+	if (!music_on_off) {
+		m_music_off->Draw();
+	}
 }

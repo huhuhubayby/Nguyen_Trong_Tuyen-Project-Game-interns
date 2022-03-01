@@ -121,6 +121,7 @@ void GSBauCua::Init()
 			/*m_times = clock();*/
 			m_timeBegin = clock();
 			//return;
+			//ResourceManagers::GetInstance()->PlaySound("xucxac");
 		}
 		else if (!m_Click2 && m_Click1) {
 			
@@ -458,7 +459,7 @@ void GSBauCua::Update(float deltaTime)
 			
 			m_BatDia->Set2DPosition((float)Globals::screenWidth / 2, ((float)Globals::screenHeight / 2) - 200);
 			m_PosX = (float)Globals::screenWidth / 2;
-			
+			//ResourceManagers::GetInstance()->PauseSound("xucxac");
 		}
 
 		
@@ -597,8 +598,8 @@ void GSBauCua::XucXac(int chose,float x, float y) {
 		xs->Draw();
 		effect->Draw();
 
-		Globals::moneys += (2*m_cuoc_bau*80)/100;
-		m_cuoc_bau = 0;
+		Globals::moneys += (m_cuoc_bau+((m_cuoc_bau*80)/100));
+		/*m_cuoc_bau = 0;*/
 
 		break;
 	case 2:
@@ -613,8 +614,8 @@ void GSBauCua::XucXac(int chose,float x, float y) {
 		xs->Draw();
 		effect->Draw();
 
-		Globals::moneys += (2 * m_cuoc_cua * 80) / 100;
-		m_cuoc_cua = 0;
+		Globals::moneys += (m_cuoc_cua + ((m_cuoc_cua * 80) / 100));
+		/*m_cuoc_cua = 0;*/
 		break;
 	case 3:
 		m_texture = ResourceManagers::GetInstance()->GetTexture("tom_ico.tga");
@@ -628,8 +629,8 @@ void GSBauCua::XucXac(int chose,float x, float y) {
 		xs->Draw();
 		effect->Draw();
 
-		Globals::moneys += (2 * m_cuoc_tom * 80) / 100;
-		m_cuoc_tom = 0;
+		Globals::moneys += (m_cuoc_tom + ((m_cuoc_tom * 80) / 100));
+		/*m_cuoc_tom = 0;*/
 		break;
 	case 4:
 		m_texture = ResourceManagers::GetInstance()->GetTexture("ca_ico.tga");
@@ -643,8 +644,8 @@ void GSBauCua::XucXac(int chose,float x, float y) {
 		xs->Draw();
 		effect->Draw();
 
-		Globals::moneys += (2 * m_cuoc_ca * 80) / 100;
-		m_cuoc_ca = 0;
+		Globals::moneys += (m_cuoc_ca + ((m_cuoc_ca * 80) / 100));
+		/*m_cuoc_ca = 0;*/
 		break;
 	case 5:
 		m_texture = ResourceManagers::GetInstance()->GetTexture("huou_ico.tga");
@@ -658,8 +659,8 @@ void GSBauCua::XucXac(int chose,float x, float y) {
 		xs->Draw();
 		effect->Draw();
 
-		Globals::moneys += (2 * m_cuoc_huou * 80) / 100;
-		m_cuoc_huou = 0;
+		Globals::moneys += (m_cuoc_huou + ((m_cuoc_huou * 80) / 100));
+		/*m_cuoc_huou = 0;*/
 		break;
 	case 6:
 		m_texture = ResourceManagers::GetInstance()->GetTexture("ga_ico.tga");
@@ -673,8 +674,8 @@ void GSBauCua::XucXac(int chose,float x, float y) {
 		xs->Draw();
 		effect->Draw();
 
-		Globals::moneys += (2 * m_cuoc_ga * 80) / 100;
-		m_cuoc_ga = 0;
+		Globals::moneys += (m_cuoc_ga + ((m_cuoc_ga * 80) / 100));
+		/*m_cuoc_ga = 0;*/
 		break;
 	default:
 		break;

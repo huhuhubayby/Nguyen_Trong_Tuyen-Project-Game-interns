@@ -370,14 +370,14 @@ void GSTaiXiu::Update(float deltaTime)
 			if (m_Chose_chan)
 			{
 				if (m_diem % 2 == 0) {
-					Globals::moneys += (2*m_cuoc*80)/100;
+					Globals::moneys += (m_cuoc + ((m_cuoc * 70) / 100));
 					
 				}
 			}
 			if (m_Chose_le)
 			{
 				if (m_diem % 2 != 0) {
-					Globals::moneys += (2 * m_cuoc * 80) / 100;
+					Globals::moneys += (m_cuoc + ((m_cuoc * 70) / 100));
 					
 					
 				}

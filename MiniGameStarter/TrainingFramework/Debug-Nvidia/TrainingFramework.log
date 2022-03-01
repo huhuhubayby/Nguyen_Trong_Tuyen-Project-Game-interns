@@ -1,0 +1,6 @@
+﻿  GSMenu.cpp
+C:\Users\hoid7\Downloads\MiniGameStarter\TrainingFramework\src\GameStates\GSMenu.cpp(148,55): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\hoid7\Downloads\MiniGameStarter\TrainingFramework\src\GameStates\GSMenu.cpp(254,61): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\hoid7\Downloads\MiniGameStarter\TrainingFramework\src\GameStates\GSMenu.cpp(257,61): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\hoid7\Downloads\MiniGameStarter\TrainingFramework\src\GameStates\GSMenu.cpp(260,60): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  TrainingFramework.vcxproj -> C:\Users\hoid7\Downloads\MiniGameStarter\BIN-Nvidia\GameBai.exe

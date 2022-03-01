@@ -11,6 +11,9 @@
 #include "GameObject/Sprite3D.h"
 #include "GameObject/Text.h"
 
+#include"soloud.h"
+#include"soloud_wav.h"
+
 class ResourceManagers : public CSingleton<ResourceManagers>
 {
 public:
@@ -27,6 +30,11 @@ public:
 	void RemoveTexture(const std::string& name);
 	void RemoveFont(const std::string& name);
 
+	// sound
+	void AddSound(const std::string& name);
+	void PlaySound(const std::string& name, bool loop = false);
+	void PauseSound(const std::string& name);
+
 	std::shared_ptr<Shader> GetShader(const std::string& name);
 	std::shared_ptr<Model> GetModel(const std::string& name); 
 	std::shared_ptr<Texture> GetTexture(const std::string& name);	
@@ -42,5 +50,9 @@ private:
 	std::string m_ModelPath; 
 	std::string m_TexturePath;
 	std::string m_FontPath;
+	//
+	std::string m_SoundsPath;
+	std::map<std::string, std::shared_ptr<SoLoud::Wav>> m_MapWave;
+	SoLoud::Soloud m_Soloud;
 
 };

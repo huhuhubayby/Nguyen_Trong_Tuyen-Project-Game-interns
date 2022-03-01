@@ -445,7 +445,7 @@ void GSXocDia::Update(float deltaTime)
 				if ((m_le && !m_chan) || (!m_le && m_chan))
 				{
 					
-					Globals::moneys += (2*m_cuoc*80)/100;
+					Globals::moneys += (m_cuoc + ((m_cuoc * 70) / 100));
 					
 					m_cuoc = 0;
 				}
@@ -458,7 +458,7 @@ void GSXocDia::Update(float deltaTime)
 			{
 				if ((m_le && m_chan) || (!m_le && !m_chan) ) {
 					
-					Globals::moneys += (2 * m_cuoc * 80) / 100;
+					Globals::moneys += (m_cuoc+(( m_cuoc * 70) / 100));
 					
 					m_cuoc = 0;
 				}
